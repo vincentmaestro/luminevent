@@ -1,0 +1,6257 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UserSettings": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"notification": {},
+					"preference": {
+						"type": "string",
+						"enum": [
+							"system",
+							"dark",
+							"light"
+						]
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"userId",
+					"notification",
+					"preference"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Organiser": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"phoneNumberVerified": {
+						"type": "boolean"
+					},
+					"address": {
+						"type": "string",
+						"nullable": true
+					},
+					"logo": {
+						"type": "string",
+						"nullable": true
+					},
+					"bio": {
+						"type": "string",
+						"nullable": true
+					},
+					"website": {
+						"type": "string",
+						"nullable": true
+					},
+					"email": {
+						"type": "string"
+					},
+					"organisationName": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"phoneNumber",
+					"phoneNumberVerified",
+					"address",
+					"logo",
+					"bio",
+					"website",
+					"email",
+					"organisationName",
+					"userId",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AccountOutput": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"providerId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"userId",
+					"providerId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrganizerPayoutAccount": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"bvn": {
+						"type": "string",
+						"nullable": true
+					},
+					"bankName": {
+						"type": "string"
+					},
+					"paystackSubAccountCode": {
+						"type": "string"
+					},
+					"bankAccountName": {
+						"type": "string"
+					},
+					"bankAccountNumber": {
+						"type": "string"
+					},
+					"bankRoutingNumber": {
+						"type": "string",
+						"nullable": true
+					},
+					"verified": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"schedulePayout": {
+						"type": "string",
+						"enum": [
+							"weekly",
+							"monthly"
+						]
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"userId",
+					"bvn",
+					"bankName",
+					"paystackSubAccountCode",
+					"bankAccountName",
+					"bankAccountNumber",
+					"bankRoutingNumber",
+					"verified",
+					"schedulePayout"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserWithRelationship": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"emailVerified": {
+						"type": "boolean"
+					},
+					"image": {
+						"type": "string",
+						"nullable": true
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"user",
+							"admin",
+							"staff",
+							"hoster"
+						]
+					},
+					"banned": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastLogin": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userSettings": {
+						"$ref": "#/components/schemas/UserSettings"
+					},
+					"organiser": {
+						"$ref": "#/components/schemas/Organiser"
+					},
+					"accounts": {
+						"items": {
+							"$ref": "#/components/schemas/AccountOutput"
+						},
+						"type": "array"
+					},
+					"organizerPayoutAccount": {
+						"$ref": "#/components/schemas/OrganizerPayoutAccount"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"emailVerified",
+					"image",
+					"role",
+					"banned",
+					"customerCode",
+					"lastLogin",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_UserWithRelationship-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/UserWithRelationship"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetSSOAccounts": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"providerId": {
+						"type": "string"
+					},
+					"accountId": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"providerId",
+					"accountId",
+					"userId",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_GetSSOAccounts-Array-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/GetSSOAccounts"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"User": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"emailVerified": {
+						"type": "boolean"
+					},
+					"image": {
+						"type": "string",
+						"nullable": true
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"user",
+							"admin",
+							"staff",
+							"hoster"
+						]
+					},
+					"banned": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastLogin": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"emailVerified",
+					"image",
+					"role",
+					"banned",
+					"customerCode",
+					"lastLogin",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_User-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/User"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateUserInputBody": {
+				"properties": {
+					"image": {
+						"type": "string"
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"user",
+							"admin",
+							"staff",
+							"hoster"
+						]
+					},
+					"banned": {
+						"type": "boolean"
+					},
+					"emailVerified": {
+						"type": "boolean"
+					},
+					"lastLogin": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"anyOf": [],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_UserSettings-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/UserSettings"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"NotificationSettings": {
+				"properties": {
+					"email": {
+						"properties": {
+							"securityAlerts": {
+								"type": "boolean"
+							},
+							"marketing": {
+								"type": "boolean"
+							},
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"securityAlerts",
+							"marketing",
+							"enabled"
+						],
+						"type": "object"
+					},
+					"sms": {
+						"properties": {
+							"promotions": {
+								"type": "boolean"
+							},
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"promotions",
+							"enabled"
+						],
+						"type": "object"
+					},
+					"whatsapp": {
+						"properties": {
+							"updates": {
+								"type": "boolean"
+							},
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"updates",
+							"enabled"
+						],
+						"type": "object"
+					},
+					"push": {
+						"properties": {
+							"alerts": {
+								"type": "boolean"
+							},
+							"reminders": {
+								"type": "boolean"
+							},
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"alerts",
+							"reminders",
+							"enabled"
+						],
+						"type": "object"
+					},
+					"telegram": {
+						"properties": {
+							"updates": {
+								"type": "boolean"
+							},
+							"alerts": {
+								"type": "boolean"
+							},
+							"enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"updates",
+							"alerts",
+							"enabled"
+						],
+						"type": "object"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateUserSettingsInputBody": {
+				"properties": {
+					"userId": {
+						"type": "string"
+					},
+					"notification": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/NotificationSettings"
+							},
+							{}
+						]
+					},
+					"preferences": {
+						"type": "string",
+						"enum": [
+							"system",
+							"dark",
+							"light"
+						]
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BecomeOrganiserInputBody": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"organisationName": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"phoneNumberVerified": {
+						"type": "boolean"
+					},
+					"address": {
+						"properties": {
+							"country": {
+								"type": "string"
+							},
+							"postalCode": {
+								"type": "string"
+							},
+							"state": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"street": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"logo": {
+						"type": "string"
+					},
+					"bio": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"admin",
+							"staff",
+							"hoster",
+							"user"
+						]
+					}
+				},
+				"required": [
+					"organisationName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrganiserWallet": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"organiserId": {
+						"type": "string"
+					},
+					"grossRevenue": {
+						"type": "string"
+					},
+					"payoutBalance": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"organiserId",
+					"grossRevenue",
+					"payoutBalance"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrganiserWithRelationship": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"emailVerified": {
+						"type": "boolean"
+					},
+					"image": {
+						"type": "string",
+						"nullable": true
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"user",
+							"admin",
+							"staff",
+							"hoster"
+						]
+					},
+					"banned": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastLogin": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userSettings": {
+						"$ref": "#/components/schemas/UserSettings"
+					},
+					"organiser": {
+						"$ref": "#/components/schemas/Organiser"
+					},
+					"wallet": {
+						"$ref": "#/components/schemas/OrganiserWallet"
+					},
+					"organizerPayoutAccount": {
+						"$ref": "#/components/schemas/OrganizerPayoutAccount"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"emailVerified",
+					"image",
+					"role",
+					"banned",
+					"customerCode",
+					"lastLogin",
+					"createdAt",
+					"updatedAt",
+					"organiser",
+					"wallet"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_OrganiserWithRelationship-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OrganiserWithRelationship"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateOrganiserInputBody": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"organisationName": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"phoneNumberVerified": {
+						"type": "boolean"
+					},
+					"address": {
+						"properties": {
+							"country": {
+								"type": "string"
+							},
+							"postalCode": {
+								"type": "string"
+							},
+							"state": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"street": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"logo": {
+						"type": "string"
+					},
+					"bio": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"admin",
+							"staff",
+							"hoster",
+							"user"
+						]
+					}
+				},
+				"required": [
+					"email",
+					"password",
+					"organisationName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_Organiser-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/Organiser"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOrganiserInputBody": {
+				"properties": {
+					"address": {
+						"properties": {
+							"country": {
+								"type": "string"
+							},
+							"postalCode": {
+								"type": "string"
+							},
+							"state": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"street": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"logo": {
+						"type": "string"
+					},
+					"bio": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrganiserSocialAccount": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"platform": {
+						"type": "string",
+						"enum": [
+							"facebook",
+							"twitterX",
+							"tiktok",
+							"youtube",
+							"instagram",
+							"linkedin"
+						]
+					},
+					"url": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"organiserId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"platform",
+					"url",
+					"createdAt",
+					"updatedAt",
+					"organiserId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_OrganiserSocialAccount-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OrganiserSocialAccount"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AddSocialAccountInputBody": {
+				"properties": {
+					"platform": {
+						"type": "string",
+						"enum": [
+							"facebook",
+							"twitterX",
+							"tiktok",
+							"youtube",
+							"instagram",
+							"linkedin"
+						]
+					},
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"platform",
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_OrganiserSocialAccount-Array-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/OrganiserSocialAccount"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_OrganizerPayoutAccount-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OrganizerPayoutAccount"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SchedulePayout": {
+				"type": "string",
+				"enum": [
+					"daily",
+					"weekly",
+					"monthly"
+				]
+			},
+			"CreateOrganizerPayoutAccountDTO": {
+				"properties": {
+					"bankName": {
+						"type": "string"
+					},
+					"bankAccountName": {
+						"type": "string"
+					},
+					"bankAccountNumber": {
+						"type": "string"
+					},
+					"bvn": {
+						"type": "string"
+					},
+					"bankRoutingNumber": {
+						"type": "string"
+					},
+					"schedulePayout": {
+						"$ref": "#/components/schemas/SchedulePayout"
+					}
+				},
+				"required": [
+					"bankName",
+					"bankAccountName",
+					"bankAccountNumber",
+					"schedulePayout"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOrganizerPayoutAccountDTO": {
+				"properties": {
+					"bankName": {
+						"type": "string"
+					},
+					"bankAccountName": {
+						"type": "string"
+					},
+					"bvn": {
+						"type": "string"
+					},
+					"bankAccountNumber": {
+						"type": "string"
+					},
+					"bankRoutingNumber": {
+						"type": "string"
+					},
+					"schedulePayout": {
+						"$ref": "#/components/schemas/SchedulePayout"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SeatingTypeEnum": {
+				"type": "string",
+				"enum": [
+					"table_n_chairs",
+					"section_n_rows",
+					"chairs"
+				]
+			},
+			"SelectTicketSectionDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"eventId": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventSeatingId": {
+						"type": "string",
+						"nullable": true
+					},
+					"selectedSeatingIds": {},
+					"selectedSeatingType": {
+						"$ref": "#/components/schemas/SeatingTypeEnum"
+					},
+					"ticketName": {
+						"type": "string"
+					},
+					"ticketDescription": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"perks": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"salesStart": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"salesEnd": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"totalTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"absorbTicketFee": {
+						"type": "boolean"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"eventId",
+					"eventSeatingId",
+					"selectedSeatingIds",
+					"selectedSeatingType",
+					"ticketName",
+					"ticketDescription",
+					"price",
+					"perks",
+					"salesStart",
+					"salesEnd",
+					"totalTickets",
+					"availableTickets",
+					"absorbTicketFee",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SelectTicketSectionDTO_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/SelectTicketSectionDTO"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateTicketSectionDTO": {
+				"properties": {
+					"eventSeatingId": {
+						"type": "string"
+					},
+					"eventId": {
+						"type": "string"
+					},
+					"selectedSeatingIds": {},
+					"selectedSeatingType": {
+						"$ref": "#/components/schemas/SeatingTypeEnum"
+					},
+					"ticketName": {
+						"type": "string"
+					},
+					"ticketDescription": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"perks": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"salesStart": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"salesEnd": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"totalTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"absorbTicketFee": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"selectedSeatingIds",
+					"selectedSeatingType",
+					"ticketName",
+					"ticketDescription",
+					"price",
+					"salesStart",
+					"salesEnd",
+					"totalTickets",
+					"availableTickets"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SelectTicketSectionDTO-Array-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/SelectTicketSectionDTO"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateTicketSectionDTO": {
+				"properties": {
+					"eventSeatingId": {
+						"type": "string"
+					},
+					"eventId": {
+						"type": "string"
+					},
+					"selectedSeatingIds": {},
+					"selectedSeatingType": {
+						"$ref": "#/components/schemas/SeatingTypeEnum"
+					},
+					"ticketName": {
+						"type": "string"
+					},
+					"ticketDescription": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"perks": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"salesStart": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"salesEnd": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"totalTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"absorbTicketFee": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SelectTicketPromoCodeDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"eventId": {
+						"type": "string",
+						"nullable": true
+					},
+					"promotionCode": {
+						"type": "string"
+					},
+					"promotionType": {
+						"type": "string",
+						"enum": [
+							"percentage_off",
+							"fixed_amount_off",
+							"buy_one_get_one"
+						]
+					},
+					"promoValue": {
+						"type": "string",
+						"nullable": true
+					},
+					"startDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"endDate": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"eventId",
+					"promotionCode",
+					"promotionType",
+					"promoValue",
+					"startDate",
+					"endDate"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SelectTicketPromoCodeDTO-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/SelectTicketPromoCodeDTO"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreatePromoCodeDTO": {
+				"properties": {
+					"promotionCode": {
+						"type": "string"
+					},
+					"promotionType": {
+						"type": "string",
+						"enum": [
+							"percentage_off",
+							"fixed_amount_off",
+							"buy_one_get_one"
+						]
+					},
+					"promoValue": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"endDate": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"promotionCode",
+					"promotionType",
+					"promoValue",
+					"startDate",
+					"endDate"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SelectTicketPromoCodeDTO-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/SelectTicketPromoCodeDTO"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApplyPromoCodeDTO": {
+				"properties": {
+					"code": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SelectRefundPolicyDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"eventId": {
+						"type": "string",
+						"nullable": true
+					},
+					"refundPeriod": {
+						"type": "number",
+						"format": "double"
+					},
+					"isRefundable": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"eventId",
+					"refundPeriod",
+					"isRefundable"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SelectRefundPolicyDTO-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/SelectRefundPolicyDTO"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateRefundPolicyDTO": {
+				"properties": {
+					"refundPeriod": {
+						"type": "number",
+						"format": "double"
+					},
+					"isRefundable": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"refundPeriod",
+					"isRefundable"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateRefundPolicyDTO": {
+				"properties": {
+					"refundPeriod": {
+						"type": "number",
+						"format": "double"
+					},
+					"isRefundable": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TicketSale": {
+				"properties": {
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"purchaseDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"totalAmount": {
+						"type": "string"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"seatsOrTablePurchased": {},
+					"ticketSectionId": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"updatedAt",
+					"createdAt",
+					"purchaseDate",
+					"totalAmount",
+					"quantity",
+					"userId",
+					"seatsOrTablePurchased",
+					"ticketSectionId",
+					"id"
+				],
+				"type": "object"
+			},
+			"APIResponse_TicketSale-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/TicketSale"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BuyTicketsDto": {
+				"properties": {
+					"updated_at": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"purchaseDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"totalAmount": {
+						"type": "string"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"promoCode": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"seatsOrTablePurchased": {},
+					"ticketSectionId": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"totalAmount",
+					"quantity",
+					"userId",
+					"seatsOrTablePurchased"
+				],
+				"type": "object"
+			},
+			"EventSeatMapping": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"eventId": {
+						"type": "string",
+						"nullable": true
+					},
+					"seatingType": {
+						"type": "string",
+						"enum": [
+							"table_n_chairs",
+							"section_n_rows",
+							"individual",
+							"mixed"
+						]
+					},
+					"totalCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableCapacity": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"eventId",
+					"seatingType",
+					"totalCapacity",
+					"availableCapacity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SeatingResponseItem": {
+				"properties": {
+					"seating": {
+						"$ref": "#/components/schemas/EventSeatMapping"
+					}
+				},
+				"required": [
+					"seating"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SeatingsList": {
+				"description": "The response shape for seating creation and retrieval.",
+				"properties": {
+					"seatings": {
+						"items": {
+							"$ref": "#/components/schemas/SeatingResponseItem"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SectionAndRowsSeating": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"seatMapId": {
+						"type": "string"
+					},
+					"noOfSections": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfRowsPerSection": {
+						"type": "number",
+						"format": "double"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"seatMapId",
+					"noOfSections",
+					"noOfRowsPerSection",
+					"total"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TableAndChairsSeating": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"seatMapId": {
+						"type": "string"
+					},
+					"noOfTables": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"seatMapId",
+					"noOfTables",
+					"noOfChairsPerTable",
+					"total"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MixedSeating": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"seatMapId": {
+						"type": "string"
+					},
+					"noOfSections": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfRowsPerSection": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfTables": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalChairTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerRows": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalSectionRow": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"seatMapId",
+					"noOfSections",
+					"noOfRowsPerSection",
+					"noOfTables",
+					"noOfChairsPerTable",
+					"totalChairTable",
+					"noOfChairsPerRows",
+					"totalSectionRow"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SeatingResponse": {
+				"description": "The response shape for seating creation and retrieval.",
+				"properties": {
+					"seating": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/EventSeatMapping"
+							},
+							{
+								"$ref": "#/components/schemas/SeatingsList"
+							}
+						],
+						"description": "The base event seating mapping metadata."
+					},
+					"arrangement": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/SectionAndRowsSeating"
+							},
+							{
+								"$ref": "#/components/schemas/TableAndChairsSeating"
+							},
+							{
+								"$ref": "#/components/schemas/MixedSeating"
+							}
+						],
+						"description": "A detailed seating arrangement definition.\r\n\r\nCan be one of:\r\n- Section and rows seating\r\n- Table and chairs seating\r\n- Mixed seating"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_SeatingResponse-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/SeatingResponse"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateSeatingInputBody": {
+				"properties": {
+					"seatingType": {
+						"type": "string",
+						"enum": [
+							"section_n_rows",
+							"table_n_chairs",
+							"mixed",
+							"individual"
+						]
+					},
+					"totalCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfSections": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfRowsPerSection": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerSection": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfTables": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalChairTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerRows": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalSectionRow": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"seatingType",
+					"totalCapacity",
+					"availableCapacity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateSeatingInputBody": {
+				"properties": {
+					"seatingType": {
+						"type": "string",
+						"enum": [
+							"section_n_rows",
+							"table_n_chairs",
+							"mixed",
+							"individual"
+						]
+					},
+					"totalCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfSections": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfRowsPerSection": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfTables": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalChairTable": {
+						"type": "number",
+						"format": "double"
+					},
+					"noOfChairsPerRows": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalSectionRow": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"seatingType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventCategory": {
+				"properties": {
+					"isActive": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"image": {
+						"type": "string",
+						"nullable": true
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					},
+					"name": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"isActive",
+					"image",
+					"description",
+					"name",
+					"updatedAt",
+					"createdAt",
+					"id"
+				],
+				"type": "object"
+			},
+			"APIResponse_EventCategory-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/EventCategory"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_EventCategory.Exclude_keyofEventCategory.id-or-createdAt-or-updatedAt__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"description",
+					"image",
+					"isActive"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_EventCategory.id-or-createdAt-or-updatedAt_": {
+				"$ref": "#/components/schemas/Pick_EventCategory.Exclude_keyofEventCategory.id-or-createdAt-or-updatedAt__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"EventCategoryInput": {
+				"$ref": "#/components/schemas/Omit_EventCategory.id-or-createdAt-or-updatedAt_"
+			},
+			"Partial_EventCategoryInput_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"UpdateEventCategoryInput": {
+				"$ref": "#/components/schemas/Partial_EventCategoryInput_"
+			},
+			"APIResponse_EventCategory-Array-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/EventCategory"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventTag": {
+				"properties": {
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"updatedAt",
+					"createdAt",
+					"name",
+					"id"
+				],
+				"type": "object"
+			},
+			"APIResponse_EventTag-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/EventTag"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_EventTag-Array-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/EventTag"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventOnlyDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft",
+							null
+						],
+						"nullable": true
+					},
+					"organiserID": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isSingleEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"organizedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"public": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"private": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"publish": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"schedule": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"status",
+					"organiserID",
+					"eventName",
+					"eventCategory",
+					"eventBanner",
+					"publishedTimestamp",
+					"isRecurringEvent",
+					"isSingleEvent",
+					"organizedBy",
+					"public",
+					"private",
+					"publish",
+					"schedule"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_EventOnlyDTO-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/EventOnlyDTO"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_EventContactDTO.Exclude_keyofEventContactDTO.id-or-eventId-or-createdAt-or-updatedAt__": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"facebook": {
+						"type": "string"
+					},
+					"twitterX": {
+						"type": "string"
+					},
+					"instagram": {
+						"type": "string"
+					},
+					"linkedin": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"isPrimary": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"email",
+					"facebook",
+					"twitterX",
+					"instagram",
+					"linkedin",
+					"website",
+					"phone",
+					"isPrimary"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_EventContactDTO.id-or-eventId-or-createdAt-or-updatedAt_": {
+				"$ref": "#/components/schemas/Pick_EventContactDTO.Exclude_keyofEventContactDTO.id-or-eventId-or-createdAt-or-updatedAt__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"AddEventContactDTO": {
+				"$ref": "#/components/schemas/Omit_EventContactDTO.id-or-eventId-or-createdAt-or-updatedAt_"
+			},
+			"Pick_RecurringEvent.Exclude_keyofRecurringEvent.eventId-or-id-or-longitude-or-latitude-or-createdAt-or-updatedAt__": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"recurrenceDate": {
+						"type": "string"
+					},
+					"recurrenceStartTime": {
+						"type": "string"
+					},
+					"recurrenceEndTime": {
+						"type": "string"
+					},
+					"recurrenceTimezone": {
+						"type": "string"
+					},
+					"recurrenceType": {
+						"type": "string",
+						"enum": [
+							"daily",
+							"weekly",
+							"monthly",
+							"once",
+							"yearly"
+						]
+					},
+					"recurrenceLocationType": {
+						"type": "string",
+						"enum": [
+							"online",
+							"venue",
+							"other"
+						]
+					},
+					"recurrenceLocation": {
+						"type": "string"
+					},
+					"isCancelled": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"isActive",
+					"recurrenceDate",
+					"recurrenceStartTime",
+					"recurrenceEndTime",
+					"recurrenceTimezone",
+					"recurrenceType",
+					"recurrenceLocationType",
+					"recurrenceLocation",
+					"isCancelled"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_RecurringEvent.eventId-or-id-or-longitude-or-latitude-or-createdAt-or-updatedAt_": {
+				"$ref": "#/components/schemas/Pick_RecurringEvent.Exclude_keyofRecurringEvent.eventId-or-id-or-longitude-or-latitude-or-createdAt-or-updatedAt__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"RecurringEventInput": {
+				"$ref": "#/components/schemas/Omit_RecurringEvent.eventId-or-id-or-longitude-or-latitude-or-createdAt-or-updatedAt_"
+			},
+			"Pick_Events.Exclude_keyofEvents.id-or-createdAt-or-updatedAt-or-organiserID__": {
+				"properties": {
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft"
+						]
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean"
+					},
+					"isSingleEvent": {
+						"type": "boolean"
+					},
+					"organizedBy": {
+						"type": "string"
+					},
+					"public": {
+						"type": "boolean"
+					},
+					"private": {
+						"type": "boolean"
+					},
+					"publish": {
+						"type": "boolean"
+					},
+					"schedule": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"status",
+					"eventName",
+					"eventCategory",
+					"eventDescription",
+					"eventBanner",
+					"publishedTimestamp",
+					"isRecurringEvent",
+					"isSingleEvent",
+					"organizedBy",
+					"public",
+					"private",
+					"publish",
+					"schedule"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_Events.id-or-createdAt-or-updatedAt-or-organiserID_": {
+				"$ref": "#/components/schemas/Pick_Events.Exclude_keyofEvents.id-or-createdAt-or-updatedAt-or-organiserID__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"CreateEventDTO": {
+				"properties": {
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft"
+						]
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean"
+					},
+					"isSingleEvent": {
+						"type": "boolean"
+					},
+					"organizedBy": {
+						"type": "string"
+					},
+					"public": {
+						"type": "boolean"
+					},
+					"private": {
+						"type": "boolean"
+					},
+					"publish": {
+						"type": "boolean"
+					},
+					"schedule": {
+						"type": "boolean"
+					},
+					"contact": {
+						"$ref": "#/components/schemas/AddEventContactDTO",
+						"description": "Contact information for the event."
+					},
+					"tags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"description": "An array of tags associated with the event for categorization."
+					},
+					"recurrenceDetails": {
+						"items": {
+							"$ref": "#/components/schemas/RecurringEventInput"
+						},
+						"type": "array",
+						"description": "An array of recurrence details for events that repeat on a schedule."
+					}
+				},
+				"required": [
+					"status",
+					"eventName",
+					"eventCategory",
+					"eventDescription",
+					"eventBanner",
+					"publishedTimestamp",
+					"isRecurringEvent",
+					"isSingleEvent",
+					"organizedBy",
+					"public",
+					"private",
+					"publish",
+					"schedule"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventContactDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"facebook": {
+						"type": "string",
+						"nullable": true
+					},
+					"twitterX": {
+						"type": "string",
+						"nullable": true
+					},
+					"instagram": {
+						"type": "string",
+						"nullable": true
+					},
+					"linkedin": {
+						"type": "string",
+						"nullable": true
+					},
+					"website": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventId": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string",
+						"nullable": true
+					},
+					"isPrimary": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"email",
+					"createdAt",
+					"updatedAt",
+					"facebook",
+					"twitterX",
+					"instagram",
+					"linkedin",
+					"website",
+					"eventId",
+					"phone",
+					"isPrimary"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventSeatingDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"eventId": {
+						"type": "string",
+						"nullable": true
+					},
+					"seatingType": {
+						"type": "string",
+						"enum": [
+							"table_n_chairs",
+							"section_n_rows",
+							"individual",
+							"mixed"
+						]
+					},
+					"totalCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"availableCapacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"mixedSeating": {
+						"$ref": "#/components/schemas/MixedSeating"
+					},
+					"sectionAndRows": {
+						"$ref": "#/components/schemas/SectionAndRowsSeating"
+					},
+					"tableAndChairs": {
+						"$ref": "#/components/schemas/TableAndChairsSeating"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"eventId",
+					"seatingType",
+					"totalCapacity",
+					"availableCapacity",
+					"mixedSeating",
+					"sectionAndRows",
+					"tableAndChairs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventRecurranceDetailDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"eventId": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"recurrenceDate": {
+						"type": "string"
+					},
+					"recurrenceStartTime": {
+						"type": "string"
+					},
+					"recurrenceEndTime": {
+						"type": "string"
+					},
+					"recurrenceTimezone": {
+						"type": "string"
+					},
+					"recurrenceType": {
+						"type": "string",
+						"enum": [
+							"once",
+							"weekly",
+							"monthly",
+							"daily",
+							"yearly"
+						]
+					},
+					"recurrenceLocationType": {
+						"type": "string",
+						"enum": [
+							"online",
+							"venue",
+							"other"
+						]
+					},
+					"recurrenceLocation": {
+						"type": "string",
+						"nullable": true
+					},
+					"latitude": {
+						"type": "string",
+						"nullable": true
+					},
+					"longitude": {
+						"type": "string",
+						"nullable": true
+					},
+					"isCancelled": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"eventId",
+					"isActive",
+					"recurrenceDate",
+					"recurrenceStartTime",
+					"recurrenceEndTime",
+					"recurrenceTimezone",
+					"recurrenceType",
+					"recurrenceLocationType",
+					"recurrenceLocation",
+					"latitude",
+					"longitude",
+					"isCancelled"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventDto": {
+				"description": "EventDto\nthis mirrors the event schema in zod\nthis helps with the tsoa openapi docs",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft",
+							null
+						],
+						"nullable": true
+					},
+					"organiserID": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isSingleEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"organizedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"public": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"private": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"publish": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"schedule": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"contact": {
+						"$ref": "#/components/schemas/EventContactDTO"
+					},
+					"seatingMap": {
+						"$ref": "#/components/schemas/EventSeatingDTO"
+					},
+					"recurringDates": {
+						"items": {
+							"$ref": "#/components/schemas/EventRecurranceDetailDTO"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"status",
+					"organiserID",
+					"eventName",
+					"eventCategory",
+					"eventDescription",
+					"eventBanner",
+					"publishedTimestamp",
+					"isRecurringEvent",
+					"isSingleEvent",
+					"organizedBy",
+					"public",
+					"private",
+					"publish",
+					"schedule",
+					"contact",
+					"seatingMap",
+					"recurringDates"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_EventDto-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/EventDto"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_AddEventContactDTO_": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"facebook": {
+						"type": "string"
+					},
+					"twitterX": {
+						"type": "string"
+					},
+					"instagram": {
+						"type": "string"
+					},
+					"linkedin": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"isPrimary": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"UpdateEventContactDTO": {
+				"$ref": "#/components/schemas/Partial_AddEventContactDTO_"
+			},
+			"Partial_RecurringEventInput_": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"recurrenceDate": {
+						"type": "string"
+					},
+					"recurrenceStartTime": {
+						"type": "string"
+					},
+					"recurrenceEndTime": {
+						"type": "string"
+					},
+					"recurrenceTimezone": {
+						"type": "string"
+					},
+					"recurrenceType": {
+						"type": "string",
+						"enum": [
+							"daily",
+							"weekly",
+							"monthly",
+							"once",
+							"yearly"
+						]
+					},
+					"recurrenceLocationType": {
+						"type": "string",
+						"enum": [
+							"online",
+							"venue",
+							"other"
+						]
+					},
+					"recurrenceLocation": {
+						"type": "string"
+					},
+					"isCancelled": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"UpdateRecurringEventInput": {
+				"$ref": "#/components/schemas/Partial_RecurringEventInput_"
+			},
+			"Partial_CreateEvents_": {
+				"properties": {
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft"
+						]
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean"
+					},
+					"isSingleEvent": {
+						"type": "boolean"
+					},
+					"organizedBy": {
+						"type": "string"
+					},
+					"public": {
+						"type": "boolean"
+					},
+					"private": {
+						"type": "boolean"
+					},
+					"publish": {
+						"type": "boolean"
+					},
+					"schedule": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"UpdateEventInput": {
+				"properties": {
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft"
+						]
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean"
+					},
+					"isSingleEvent": {
+						"type": "boolean"
+					},
+					"organizedBy": {
+						"type": "string"
+					},
+					"public": {
+						"type": "boolean"
+					},
+					"private": {
+						"type": "boolean"
+					},
+					"publish": {
+						"type": "boolean"
+					},
+					"schedule": {
+						"type": "boolean"
+					},
+					"contact": {
+						"$ref": "#/components/schemas/UpdateEventContactDTO"
+					},
+					"tags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"recurrenceDetails": {
+						"items": {
+							"$ref": "#/components/schemas/UpdateRecurringEventInput"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"contact",
+					"tags",
+					"recurrenceDetails"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Events": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"completed",
+							"published",
+							"cancelled",
+							"ongoing",
+							"draft",
+							null
+						],
+						"nullable": true
+					},
+					"organiserID": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"eventCategory": {
+						"type": "string"
+					},
+					"eventDescription": {
+						"type": "string"
+					},
+					"eventBanner": {
+						"type": "string"
+					},
+					"publishedTimestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isRecurringEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isSingleEvent": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"organizedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"public": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"private": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"publish": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"schedule": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"updatedAt",
+					"status",
+					"organiserID",
+					"eventName",
+					"eventCategory",
+					"eventDescription",
+					"eventBanner",
+					"publishedTimestamp",
+					"isRecurringEvent",
+					"isSingleEvent",
+					"organizedBy",
+					"public",
+					"private",
+					"publish",
+					"schedule"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginatedResult_Events_": {
+				"description": "Represents a paginated result set with metadata.",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/Events"
+						},
+						"type": "array",
+						"description": "Array of paginated items"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double",
+						"description": "Number of items per page"
+					},
+					"nextCursor": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							},
+							{
+								"type": "number",
+								"format": "double"
+							}
+						],
+						"nullable": true,
+						"description": "The cursor for the next page (null if no more pages)"
+					},
+					"hasNextPage": {
+						"type": "boolean",
+						"description": "Whether there are more pages available"
+					}
+				},
+				"required": [
+					"success",
+					"data",
+					"pageSize",
+					"nextCursor",
+					"hasNextPage"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_PaginatedResult_Events_-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/PaginatedResult_Events_"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ContactSupportDTO": {
+				"description": "DTO: Contact Support request body",
+				"properties": {
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"companyName": {
+						"type": "string"
+					},
+					"organizationType": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"reasonForContact": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"firstName",
+					"lastName",
+					"reasonForContact",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse__user-User--accessToken-string_-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"properties": {
+							"accessToken": {
+								"type": "string"
+							},
+							"user": {
+								"$ref": "#/components/schemas/User"
+							}
+						},
+						"required": [
+							"accessToken",
+							"user"
+						],
+						"type": "object",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginUserInputBody": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse__message-string_-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"properties": {
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"message"
+						],
+						"type": "object",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RequestResetTokenInput": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse__email-string--message-string_-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"properties": {
+							"message": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"message",
+							"email"
+						],
+						"type": "object",
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResetPasswordInputBody": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"newPassword": {
+						"type": "string"
+					},
+					"confirmNewPassword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token",
+					"newPassword",
+					"confirmNewPassword"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateUserInputBody": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"role": {
+						"type": "string",
+						"enum": [
+							"admin",
+							"staff",
+							"hoster",
+							"user"
+						]
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EmailVericationBodyInput": {
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginatedResult_UserWithRelationship_": {
+				"description": "Represents a paginated result set with metadata.",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/UserWithRelationship"
+						},
+						"type": "array",
+						"description": "Array of paginated items"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double",
+						"description": "Number of items per page"
+					},
+					"nextCursor": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							},
+							{
+								"type": "number",
+								"format": "double"
+							}
+						],
+						"nullable": true,
+						"description": "The cursor for the next page (null if no more pages)"
+					},
+					"hasNextPage": {
+						"type": "boolean",
+						"description": "Whether there are more pages available"
+					}
+				},
+				"required": [
+					"success",
+					"data",
+					"pageSize",
+					"nextCursor",
+					"hasNextPage"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"APIResponse_PaginatedResult_UserWithRelationship_-or-null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/PaginatedResult_UserWithRelationship_"
+							}
+						],
+						"nullable": true
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"bearer": {
+				"type": "http",
+				"name": "Authorization",
+				"scheme": "bearer",
+				"in": "header",
+				"bearerFormat": "JWT",
+				"description": "Enter your bearer token in the format \"Bearer {token}\""
+			},
+			"tsoa_auth": {
+				"type": "oauth2",
+				"flows": {
+					"implicit": {
+						"authorizationUrl": "http://swagger.io/api/oauth/dialog",
+						"scopes": {
+							"write:pets": "modify things",
+							"read:pets": "read things"
+						}
+					}
+				}
+			}
+		}
+	},
+	"info": {
+		"title": "luminevent",
+		"version": "1.2.1",
+		"description": "Luminevent is a backend service for managing and organizing events, providing APIs for event creation, user management, and scheduling.",
+		"license": {
+			"name": "Apache-2.0"
+		},
+		"contact": {
+			"name": "BITS"
+		}
+	},
+	"paths": {
+		"/users/me": {
+			"get": {
+				"operationId": "GetMe",
+				"responses": {
+					"200": {
+						"description": "User data fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves the details of the currently authenticated user.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/users/{userId}": {
+			"get": {
+				"operationId": "GetUserById",
+				"responses": {
+					"200": {
+						"description": "User fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves a user by their ID.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Updated profile data successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_User-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates a user's profile information.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateUserInputBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"200": {
+						"description": "User deleted successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Deletes a user account.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/{userId}/social-signup-option-accounts": {
+			"get": {
+				"operationId": "GetUserSSOAccounts",
+				"responses": {
+					"200": {
+						"description": "Social accounts fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_GetSSOAccounts-Array-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves all social accounts linked to a user.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/{userId}/settings": {
+			"put": {
+				"operationId": "UpdateUserSettings",
+				"responses": {
+					"200": {
+						"description": "User settings updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserSettings-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates a user's settings.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateUserSettingsInputBody"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetUserSettings",
+				"responses": {
+					"200": {
+						"description": "User settings fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserSettings-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves a user's settings.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/{userId}/become-organiser": {
+			"post": {
+				"operationId": "BecomeOrganiser",
+				"responses": {
+					"200": {
+						"description": "User successfully became an organiser",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Transforms an existing user into an organiser.",
+				"tags": [
+					"Users"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BecomeOrganiserInputBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/organiser": {
+			"post": {
+				"operationId": "CreateOrganiser",
+				"responses": {
+					"201": {
+						"description": "Organiser created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganiserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates a new organiser account, which also involves creating a new user\nand initializing their user settings and organiser profile.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateOrganiserInputBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/organiser/{userId}": {
+			"put": {
+				"operationId": "UpdateOrganiserDetails",
+				"responses": {
+					"200": {
+						"description": "Organiser details updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_Organiser-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an organiser's extra details.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data to update.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOrganiserInputBody",
+								"description": "The data to update."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/organiser/{userId}/social-accounts": {
+			"post": {
+				"operationId": "AddOrganiserSocialAccount",
+				"responses": {
+					"201": {
+						"description": "Organiser social account added successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganiserSocialAccount-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Adds a social account to an organiser.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddSocialAccountInputBody"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "FetchOrganiserSocialAccount",
+				"responses": {
+					"200": {
+						"description": "Fetched Organiser social account successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganiserSocialAccount-Array-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Fetches social accounts for an organiser.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/organiser/{userId}/social-accounts/{accountId}": {
+			"put": {
+				"operationId": "UpdateOrganiserSocialAccount",
+				"responses": {
+					"200": {
+						"description": "Organiser social account updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganiserSocialAccount-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Updates a social account linked to an organiser.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the social account to update.",
+						"in": "path",
+						"name": "accountId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddSocialAccountInputBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "RemoveOrganiserSocialAccount",
+				"responses": {
+					"200": {
+						"description": "Organiser social account removed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Removes a social account linked to an organiser.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the social account to remove.",
+						"in": "path",
+						"name": "accountId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/organiser/{userId}/payout-account": {
+			"post": {
+				"operationId": "CreatePayoutAccount",
+				"responses": {
+					"201": {
+						"description": "Payout account created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganizerPayoutAccount-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new payout account for the authenticated user.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data for the new payout account.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateOrganizerPayoutAccountDTO",
+								"description": "The data for the new payout account."
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"operationId": "UpdatePayoutAccount",
+				"responses": {
+					"200": {
+						"description": "Payout account updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_OrganizerPayoutAccount-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing payout account for the authenticated user.",
+				"tags": [
+					"Organiser"
+				],
+				"security": [
+					{
+						"bearer": [
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The user id.",
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data to update.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOrganizerPayoutAccountDTO",
+								"description": "The data to update."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/events/{id}/tickets": {
+			"post": {
+				"operationId": "CreateTicketSection",
+				"responses": {
+					"201": {
+						"description": "Ticket section created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketSectionDTO_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new ticket section.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data for the new ticket section.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateTicketSectionDTO",
+								"description": "The data for the new ticket section."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetTicketSections",
+				"responses": {
+					"200": {
+						"description": "Ticket sections fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketSectionDTO-Array-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves all ticket sections for a specific event.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/{id}/tickets/{ticketId}": {
+			"put": {
+				"operationId": "UpdateTicketSection",
+				"responses": {
+					"200": {
+						"description": "Ticket section updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketSectionDTO_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates a specific ticket section.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event tied to the seating map.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The ticketId of the ticket section to update.",
+						"in": "path",
+						"name": "ticketId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The partial data to update.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateTicketSectionDTO",
+								"description": "The partial data to update."
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteTicketSection",
+				"responses": {
+					"200": {
+						"description": "Ticket section deleted successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Deletes a specific ticket section.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the ticket section to delete.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "ticketId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/{id}/promo-codes": {
+			"post": {
+				"operationId": "CreatePromoCode",
+				"responses": {
+					"201": {
+						"description": "Promo code created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketPromoCodeDTO-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new promo code for a specific event.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event to link the promo code to.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data for the new promo code.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePromoCodeDTO",
+								"description": "The data for the new promo code."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetPromoCodesForSection",
+				"responses": {
+					"200": {
+						"description": "Promo codes fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketPromoCodeDTO-Array_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves all promo codes for an event.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/{id}/promo-codes/apply": {
+			"post": {
+				"operationId": "ApplyPromoCode",
+				"responses": {
+					"200": {
+						"description": "Promo code applied successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectTicketPromoCodeDTO-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Applies a promo code to an order.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event containing the promo code.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The promo code to apply and the quantity to use.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ApplyPromoCodeDTO",
+								"description": "The promo code to apply and the quantity to use."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/events/{eventId}/refund-policies": {
+			"post": {
+				"operationId": "CreateRefundPolicy",
+				"responses": {
+					"201": {
+						"description": "Refund policy created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectRefundPolicyDTO-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new refund policy for a specific event.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event to link the policy to.",
+						"in": "path",
+						"name": "eventId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The data for the new refund policy.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateRefundPolicyDTO",
+								"description": "The data for the new refund policy."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/events/{eventId}/refund-policies/{policyId}": {
+			"put": {
+				"operationId": "UpdateRefundPolicy",
+				"responses": {
+					"200": {
+						"description": "Refund policy updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SelectRefundPolicyDTO-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing refund policy.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event.",
+						"in": "path",
+						"name": "eventId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The ID of the refund policy to update.",
+						"in": "path",
+						"name": "policyId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The partial data to update.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateRefundPolicyDTO",
+								"description": "The partial data to update."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/events/{eventId}/buy-tickets": {
+			"post": {
+				"operationId": "BuyTickets",
+				"responses": {
+					"201": {
+						"description": "Tickets purchased successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_TicketSale-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Buys tickets for an event.",
+				"tags": [
+					"Event-Tickets"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The ID of the event.",
+						"in": "path",
+						"name": "eventId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The purchase details, including ticket section, seats or table, quantity, and optional promo code.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BuyTicketsDto",
+								"description": "The purchase details, including ticket section, seats or table, quantity, and optional promo code."
+							}
+						}
+					}
+				}
+			}
+		},
+		"/events/{id}/seating": {
+			"post": {
+				"operationId": "CreateSeating",
+				"responses": {
+					"201": {
+						"description": "Seating created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SeatingResponse-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new seating arrangement for a specific event.",
+				"tags": [
+					"Event-Seating"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The unique ID of the event to which the seating will be added.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The payload containing the seating type and arrangement details.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateSeatingInputBody",
+								"description": "The payload containing the seating type and arrangement details."
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"operationId": "UpdateSeating",
+				"responses": {
+					"200": {
+						"description": "Seating updated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SeatingResponse-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing seating arrangement for a specific event.",
+				"tags": [
+					"Event-Seating"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The unique ID of the event.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The payload containing the seating type and fields to be updated.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateSeatingInputBody",
+								"description": "The payload containing the seating type and fields to be updated."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetSeating",
+				"responses": {
+					"200": {
+						"description": "Seating fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_SeatingResponse-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves the seating arrangement for a specific event.",
+				"summary": "Get Seating for an Event",
+				"tags": [
+					"Event-Seating"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The unique identifier of the event.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteSeating",
+				"responses": {
+					"200": {
+						"description": "Seating deleted successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Deletes the seating arrangement for a specific event.",
+				"summary": "Delete Event Seating",
+				"tags": [
+					"Event-Seating"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The unique identifier of the event for which to delete the seating.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/category": {
+			"post": {
+				"operationId": "CreateEventCategory",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventCategory-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new event category.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "The data required to create an event category.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EventCategoryInput",
+								"description": "The data required to create an event category."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetAllEventCategories",
+				"responses": {
+					"200": {
+						"description": "Event categories fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventCategory-Array-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves all event categories.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/events/category/{id}": {
+			"put": {
+				"operationId": "UpdateEventCategory",
+				"responses": {
+					"200": {
+						"description": "Updated",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventCategory-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing event category by ID.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The UUID of the event category to update.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The fields to be updated.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateEventCategoryInput",
+								"description": "The fields to be updated."
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteEventCategory",
+				"responses": {
+					"200": {
+						"description": "Deleted",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Deletes an event category by ID.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The UUID of the event category to delete.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/tags": {
+			"post": {
+				"operationId": "CreateEventTag",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventTag-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new event tag.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "The data required to create an event tag, containing the `name` property.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"name"
+								],
+								"type": "object",
+								"description": "The data required to create an event tag, containing the `name` property."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetAllEventTags",
+				"responses": {
+					"200": {
+						"description": "Event tags fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventTag-Array-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Retrieves all event tags.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/events/tags/{id}": {
+			"put": {
+				"operationId": "UpdateEventTag",
+				"responses": {
+					"200": {
+						"description": "Updated",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventTag-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing event tag by ID.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The UUID of the event tag to update.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The new data for the event tag.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"name": {
+										"type": "string"
+									}
+								},
+								"type": "object",
+								"description": "The new data for the event tag."
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteEventTag",
+				"responses": {
+					"200": {
+						"description": "Deleted",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Deletes an event tag by ID.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The UUID of the event tag to delete.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events": {
+			"post": {
+				"operationId": "CreateEvent",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventOnlyDTO-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Creates a new event and its related records.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"description": "The complete event data from the form steps.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateEventDTO",
+								"description": "The complete event data from the form steps."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetEvents",
+				"responses": {
+					"200": {
+						"description": "Events fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_PaginatedResult_Events_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Fetches a paginated list of published events.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The number of events to return per page (defaults to 20).",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 20,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "An optional timestamp string representing the `createdAt` value of the last event from the previous page, used for cursor-based pagination.",
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/{id}": {
+			"put": {
+				"operationId": "UpdateEvent",
+				"responses": {
+					"200": {
+						"description": "Updated",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventDto-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Updates an existing event and its related records.",
+				"tags": [
+					"Events"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff",
+							"hoster"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "The unique ID of the event to update.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The complete event data to update.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateEventInput",
+								"description": "The complete event data to update."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetEventById",
+				"responses": {
+					"200": {
+						"description": "Event fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_EventDto-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Fetches a single event by its unique ID.",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The unique ID of the event to retrieve.",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/events/filter": {
+			"get": {
+				"operationId": "GetFilteredEvents",
+				"responses": {
+					"200": {
+						"description": "Filtered events fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_PaginatedResult_Events_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Fetch filtered events with optional pagination.\nReturns events filtered by status, category, organiser, and timeframe.\nSupports cursor-based pagination and Redis caching (10 minutes TTL).",
+				"tags": [
+					"Events"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Filter by event status: published, completed, cancelled, ongoing, or draft",
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"published",
+								"completed",
+								"cancelled",
+								"ongoing",
+								"draft"
+							]
+						}
+					},
+					{
+						"description": "Filter by event category",
+						"in": "query",
+						"name": "category",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter by organiser ID",
+						"in": "query",
+						"name": "organiserId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Number of events to return per request (default: 20)",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 20,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "Optional cursor for pagination (timestamp of last fetched event)",
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Timeframe to filter events: past, upcoming, or all (default: all)",
+						"in": "query",
+						"name": "timeframe",
+						"required": false,
+						"schema": {
+							"default": "all",
+							"type": "string",
+							"enum": [
+								"past",
+								"upcoming",
+								"all"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/contact-support": {
+			"post": {
+				"operationId": "SubmitContactSupport",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "Submit a contact support inquiry",
+				"tags": [
+					"Contact Support"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ContactSupportDTO"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "AuthenticateUser",
+				"responses": {
+					"200": {
+						"description": "User authenticated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__user-User--accessToken-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Handles user authentication via email and password.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginUserInputBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/refresh-token": {
+			"get": {
+				"operationId": "RefreshAccessToken",
+				"responses": {
+					"200": {
+						"description": "Access token refreshed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__user-User--accessToken-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Refreshes a user's access token using a valid refresh token.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/logout": {
+			"post": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "User logged out successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__message-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Logs out the current user by clearing all authentication tokens.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/request-password-reset": {
+			"post": {
+				"operationId": "RequestPasswordReset",
+				"responses": {
+					"200": {
+						"description": "Password reset requested successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__message-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Requests a password reset token for a given email.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RequestResetTokenInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/reset-password": {
+			"post": {
+				"operationId": "ResetPassword",
+				"responses": {
+					"200": {
+						"description": "Password reset successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__email-string--message-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Resets a user's password using a valid token and a new password.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ResetPasswordInputBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"201": {
+						"description": "User created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates a new user account with email and password, and sets up default user settings.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateUserInputBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/verify-email": {
+			"post": {
+				"operationId": "VerifyEmail",
+				"responses": {
+					"200": {
+						"description": "Email verified successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_UserWithRelationship-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verifies a user's email using a secure token.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmailVericationBodyInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/resend-email-verification": {
+			"post": {
+				"operationId": "ResendEmailVerification",
+				"responses": {
+					"200": {
+						"description": "Verification email resent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse__message-string_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Resends an email verification link to a user.",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RequestResetTokenInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/google": {
+			"get": {
+				"operationId": "RedirectToGoogle",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "Redirect to google",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/google/callback": {
+			"get": {
+				"operationId": "GoogleCallback",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"description": "Callback url for google",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/google/link": {
+			"get": {
+				"operationId": "LinkAccounttoGoogle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Link to google",
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin": {
+			"post": {
+				"operationId": "CreateAdmin",
+				"responses": {
+					"201": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates a new admin user account with a given email and password.",
+				"tags": [
+					"Admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "The requst body object with zod validattion.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateUserInputBody",
+								"description": "The requst body object with zod validattion."
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetAllUsers",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_PaginatedResult_UserWithRelationship_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Gets a paginated list of all general users with their settings.",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "Defaults to 10.",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 10,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "What cursor field to work with.",
+						"in": "query",
+						"name": "nextCursor",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "If the user's email is verified.",
+						"in": "query",
+						"name": "emailVerified",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			}
+		},
+		"/admin/organizers": {
+			"get": {
+				"operationId": "GetAllOrganizers",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_PaginatedResult_UserWithRelationship_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Gets a paginated list of all organizers with their related accounts and settings.",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin",
+							"staff"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "Defaults to 10.",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 10,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "What cursor field to work with.",
+						"in": "query",
+						"name": "nextCursor",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "If the user's email is verified.",
+						"in": "query",
+						"name": "emailVerified",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			}
+		},
+		"/admin/staffs": {
+			"get": {
+				"operationId": "GetAllStaffs",
+				"responses": {
+					"200": {
+						"description": "Fetched all staffs",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/APIResponse_PaginatedResult_UserWithRelationship_-or-null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "Gets a paginated list of all staffs with their related accounts and settings.",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"bearer": [
+							"admin"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"description": "Defaults to 10.",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 10,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "What cursor field to work with.",
+						"in": "query",
+						"name": "nextCursor",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "If the user's email is verified.",
+						"in": "query",
+						"name": "emailVerified",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/api/v1"
+		}
+	]
+}

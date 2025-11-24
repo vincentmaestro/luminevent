@@ -1,0 +1,28 @@
+{
+    "exec": "ts-node src/index.ts",
+    "execMap": {
+        "ts": "node --loader ts-node/esm"
+    },
+    "nodeArgs": [
+        "--trace-warnings"
+    ],
+    "watch": [
+        "src/",
+        ".env"
+    ],
+    "ext": "ts,js,json,env",
+    "ignore": [
+        "node_modules/**",
+        "build/**",
+        "logs/**",
+        "public/**",
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ],
+    "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "TS_NODE_FILES": "true",
+        "TS_NODE_TRANSPILE_ONLY": "true"
+    }
+}

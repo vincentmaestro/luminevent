@@ -1,0 +1,42 @@
+{
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "commonjs",
+		"rootDir": ".",
+		"outDir": "./build",
+		"baseUrl": ".",
+		"sourceMap": false,
+		"strict": true,
+
+		/* Additional Checks */
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true,
+		"isolatedModules": true,
+		"noImplicitReturns": false,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"resolveJsonModule": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true,
+		"noFallthroughCasesInSwitch": true,
+		"alwaysStrict": true,
+		"allowUnusedLabels": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Module Resolution Options */
+		"moduleResolution": "node",
+		// "moduleDetection": "force",
+		"esModuleInterop": true,
+
+		// API Docs required
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+
+		"lib": ["es2022", "dom"]
+	},
+	"include": ["src/**/*", "**/*.ts", "src/types/**/*.d.ts", "src/db/schemas/**/*.ts"],
+	"exclude": ["node_modules", "build"]
+}

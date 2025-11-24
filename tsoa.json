@@ -1,0 +1,43 @@
+{
+	"entryFile": "./src/index.ts",
+	"noImplicitAdditionalProperties": "silently-remove-extras",
+	"controllerPathGlobs": ["./src/controllers/*Controller.ts"],
+	"spec": {
+		"outputDirectory": "./docs",
+		"specVersion": 3,
+		"basePath": "/api/v1",
+		"securityDefinitions": {
+			"bearer": {
+				"type": "http",
+				"name": "Authorization",
+				"scheme": "bearer",
+				"in": "header",
+				"bearerFormat": "JWT",
+				"description": "Enter your bearer token in the format \"Bearer {token}\""
+			},
+			"tsoa_auth": {
+				"type": "oauth2",
+				"authorizationUrl": "http://swagger.io/api/oauth/dialog",
+				"flow": "implicit",
+				"scopes": {
+					"write:pets": "modify things",
+					"read:pets": "read things"
+				}
+			}
+		}
+	},
+	"routes": {
+		"basePath": "/api/v1",
+		"entryFile": "./src/index.ts",
+		"authenticationModule": "./src/middlewares/authMiddleware.ts",
+		"routesDir": "./build",
+		"security": {
+			"bearer": {
+				"name": "Authorization"
+			}
+		}
+	},
+	"compilerOptions": {
+		"baseUrl": "."
+	}
+}

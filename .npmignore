@@ -1,0 +1,43 @@
+# Node modules (should not be published)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+coverage/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# Test files
+test/
+tests/
+*.spec.js
+*.test.js
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Misc
+*.log
+*.tsbuildinfo
+
+# Ignore source maps
+*.map
+
+# Ignore local configuration
+*.local.js
+*.local.json
